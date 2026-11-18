@@ -66,12 +66,12 @@
     color: #a9a9a9;
 }
 
-.nav-items a{
+.nav-items a, .nav-account{
     margin-left: 20px;
     position: relative;
 }
 
-.nav-items a img{
+.nav-items a img, .nav-account > img{
     width: 30px;
     cursor: pointer;
 }
@@ -129,7 +129,7 @@
     text-transform: capitalize;
 }
 
-#user-btn{
+#user-btn, .popup-link{
     padding: 10px;
     background: #383838;
     color: #fff;
@@ -145,4 +145,17 @@
 .hide{
     opacity: 0;
     pointer-events: none;
+}
+.login-logout-popup .popup-link{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13.33px;
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+/* the hidden attribute must win over display rules (e.g. the popup link above) */
+[hidden]{
+    display: none !important;
 }

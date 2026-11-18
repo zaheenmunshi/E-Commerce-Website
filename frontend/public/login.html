@@ -2,34 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clothing : Log In</title>
 
-    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/alert.css">
 
 </head>
 <body>
 
-    <img src="img/loader.gif" class="loader" alt="">
+    <img src="/img/loader.gif" class="loader" alt="loading">
 
     <div class="alert-box">
-        <img src="img/error.png" class="alert-img" alt="">
-        <p class="alert-msg">Error message</p>
+        <img src="/img/error.png" class="alert-img" alt="">
+        <p class="alert-msg"></p>
     </div>
 
     <div class="container">
-        <img src="img/dark-logo.png" class="logo" alt="">
+        <a href="/"><img src="/img/dark-logo.png" class="logo" alt="Clothing"></a>
         <div>
-            <input type="email" autocomplete="off" id="email" placeholder="email">
-            <input type="password" autocomplete="off" id="password" placeholder="password">
+            <input type="email" autocomplete="username" id="email" placeholder="email" maxlength="254">
+            <input type="password" autocomplete="current-password" id="password" placeholder="password" maxlength="72">
             <button class="submit-btn">log in</button>
         </div>
+        <a href="/oauth2/authorization/google" class="link oauth-link" data-provider="google" hidden>continue with google</a>
         <a href="/signup" class="link">don't have an account? Create one</a>
     </div>
 
-    <script src="js/token.js"></script>
-    <script src="js/form.js"></script>
-    
+    <script type="module" src="/js/pages/login.js"></script>
+
 </body>
 </html>

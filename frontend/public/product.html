@@ -2,25 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product - </title>
+    <title>Product</title>
 
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/product.css">
-    
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/alert.css">
+
 </head>
 <body>
 
     <nav class="navbar"></nav>
 
+    <div class="alert-box">
+        <img src="/img/error.png" class="alert-img" alt="">
+        <p class="alert-msg"></p>
+    </div>
+
     <section class="product-details">
         <div class="image-slider">
             <div class="product-images">
-                <img src="" class="active" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
+                <img src="/img/no-image.png" class="active" alt="">
+                <img src="/img/no-image.png" alt="">
+                <img src="/img/no-image.png" alt="">
+                <img src="/img/no-image.png" alt="">
             </div>
         </div>
         <div class="details">
@@ -60,13 +65,10 @@
     </section>
 
     <section class="container-for-card-slider"></section>
-    
+
     <footer></footer>
 
-    <script src="js/nav.js"></script>
-    <script src="js/footer.js"></script>
-    <script src="js/home.js"></script>
-    <script src="js/product.js"></script>
-    
+    <script type="module" src="/js/pages/product.js"></script>
+
 </body>
 </html>

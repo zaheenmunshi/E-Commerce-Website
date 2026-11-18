@@ -1,0 +1,22 @@
+# secrets: never commit these (use backend/.env.example as the template)
+.env
+*.env
+!*.env.example
+*firebase-adminsdk*.json
+*.pem
+*.key
+
+# build output
+node_modules/
+frontend/dist/
+backend/target/
+cdk/target/
+cdk/cdk.out/
+
+# local runtime data (uploaded images)
+backend/data/
+
+# OS / editors
+.DS_Store
+*.log
+.idea/

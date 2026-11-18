@@ -1,0 +1,94 @@
+spring:
+  application:
+    name: ecommerce-backend
+  config:
+    # Local secrets (DB password, JWT key, mail login, ...) live in backend/.env, which git
+    # ignores. See backend/.env.example for every supported key.
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/ecommerce}
+    username: ${DB_USERNAME:ecom_app}
+    password: ${DB_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      # "update" while the schema is still moving. Once the database is final,
+      # switch to "validate" and manage the schema with migrations.
+      ddl-auto: ${DB_DDL_AUTO:update}
+    properties:
+      hibernate:
+        default_batch_fetch_size: 50
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: ${MAIL_SMTP_AUTH:true}
+      mail.smtp.starttls.enable: ${MAIL_STARTTLS:true}
+  jackson:
+    deserialization:
+      # Jackson 3 fails on a missing boolean/int by default; optional flags may be omitted
+      fail-on-null-for-primitives: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+  threads:
+    virtual:
+      enabled: true
+  web:
+    resources:
+      # Dev: serve the live frontend build (npm run watch in ../frontend).
+      # The packaged jar serves its bundled copy from classpath:/static/.
+      static-locations: file:${FRONTEND_DIST:../frontend/dist}/,classpath:/static/
+  # "Continue with Google" switches on when these are set, e.g. in backend/.env:
+  #   spring.security.oauth2.client.registration.google.client-id=...
+  #   spring.security.oauth2.client.registration.google.client-secret=...
+
+server:
+  port: ${PORT:8080}
+  # trust X-Forwarded-* from the AWS load balancer for client IP and https detection
+  forward-headers-strategy: native
+  error:
+    include-message: never
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+  health:
+    # the SMTP server is optional; don't fail the load-balancer health check on it
+    mail:
+      enabled: false
+
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:}
+      issuer: ${JWT_ISSUER:ecommerce-backend}
+      audience: ${JWT_AUDIENCE:ecommerce-web}
+      access-token-ttl: 15m
+    refresh-token-ttl: 7d
+    session-max-age: 30d
+    cookie-secure: ${COOKIE_SECURE:true}
+    check-breached-passwords: ${CHECK_BREACHED_PASSWORDS:true}
+    max-login-failures: 5
+    login-lockout: 15m
+    auth-requests-per-minute: 20
+  storage:
+    type: ${STORAGE_TYPE:local}
+    upload-dir: ${UPLOAD_DIR:./data/uploads}
+    s3-bucket: ${S3_BUCKET:}
+  mail:
+    enabled: ${MAIL_ENABLED:false}
+    from: ${MAIL_FROM:no-reply@clothing.local}
+  demo-data:
+    enabled: ${DEMO_DATA:false}
+    seller-email: ${DEMO_SELLER_EMAIL:seller@demo.local}
+    seller-password: ${DEMO_SELLER_PASSWORD:}

@@ -11,7 +11,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # ---- 2. backend: Spring Boot jar (Java 25, Amazon Corretto) with the frontend bundled under /static ----
-FROM amazoncorretto:25-alpine AS backend
+FROM amazoncorretto:26-alpine AS backend
 WORKDIR /src/backend
 COPY backend/mvnw backend/pom.xml ./
 COPY backend/.mvn .mvn
@@ -21,7 +21,7 @@ COPY --from=frontend /src/frontend/dist /src/frontend/dist
 RUN ./mvnw -B -q -DskipTests package && cp target/ecommerce-backend-*.jar /src/app.jar
 
 # ---- 3. runtime: Corretto 25, non-root, no build tools, sources or secrets ----
-FROM amazoncorretto:25-alpine
+FROM amazoncorretto:26-alpine
 RUN addgroup -S -g 10001 app && adduser -S -u 10001 -G app app
 WORKDIR /app
 COPY --from=backend --chown=app:app /src/app.jar app.jar

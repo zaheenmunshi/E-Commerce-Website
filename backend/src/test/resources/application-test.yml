@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:ecommerce;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+app:
+  security:
+    jwt:
+      # test-only key (base64 of 48 bytes); real keys come from JWT_SECRET
+      secret: dGVzdC1vbmx5LWp3dC1zZWNyZXQta2V5LWZvci11bml0LXRlc3RzLTAxMjM0NTY3
+    cookie-secure: false
+    check-breached-passwords: false
+    auth-requests-per-minute: 1000
+  storage:
+    type: local
+    upload-dir: target/test-uploads
+  demo-data:
+    enabled: false
+  mail:
+    enabled: false

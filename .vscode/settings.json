@@ -1,0 +1,28 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-25",
+      "path": "/Users/zaheenmunshi/Library/Java/JavaVirtualMachines/corretto-25.0.5.1.2/Contents/Home",
+      "default": true
+    }
+  ],
+  "java.compile.nullAnalysis.mode": "automatic",
+  "[java]": {
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "files.exclude": {
+    "**/target": true,
+    "frontend/dist": true,
+    "cdk/cdk.out": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/target": true,
+    "frontend/dist": true
+  }
+}

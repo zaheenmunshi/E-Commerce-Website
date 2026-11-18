@@ -1,0 +1,13 @@
+.git
+.github
+.vscode
+.claude
+cdk
+**/node_modules
+**/target
+**/.DS_Store
+frontend/dist
+backend/.env
+backend/*.env
+backend/data
+*.md

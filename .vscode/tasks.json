@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev: FE + BE",
+      "detail": "Backend on :8080 + frontend dev server with live reload on :5173 (Ctrl-C stops both)",
+      "type": "shell",
+      "command": "./dev.sh",
+      "windows": { "command": "java scripts/Dev.java" },
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "dev: FE + BE (Java script)",
+      "detail": "Same as dev.sh, cross-platform: java scripts/Dev.java",
+      "type": "shell",
+      "command": "java scripts/Dev.java",
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "frontend: watch",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch"
+    },
+    {
+      "label": "frontend: build",
+      "type": "shell",
+      "command": "npm install --no-audit --no-fund && npm run build",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "problemMatcher": "$tsc",
+      "group": "build"
+    },
+    {
+      "label": "backend: run",
+      "type": "shell",
+      "command": "./mvnw spring-boot:run",
+      "windows": { "command": ".\\mvnw.cmd spring-boot:run" },
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: test",
+      "type": "shell",
+      "command": "./mvnw -B test",
+      "windows": { "command": ".\\mvnw.cmd -B test" },
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.1.2</version>
+		<version>4.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zaheenmunshi</groupId>
@@ -18,7 +18,7 @@
 		<java.version>25</java.version>
 		<!-- compiled frontend (npm run build in ../frontend), bundled into the jar -->
 		<frontend.dist>${project.basedir}/../frontend/dist</frontend.dist>
-		<aws-sdk.version>2.59.3</aws-sdk.version>
+		<aws-sdk.version>2.59.7</aws-sdk.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
